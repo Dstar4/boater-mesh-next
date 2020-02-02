@@ -1,88 +1,204 @@
-import React from 'react'
-import Head from 'next/head'
-import Nav from '../components/nav'
+import { Breadcrumb, Icon, Row, Col, Layout, Card, Carousel } from 'antd'
+import Link from 'next/link'
+import '../style.less'
+// import image1 from '../static/images/image1.jpg'
+const { Header, Content } = Layout
 
-const Home = () => (
-  <div>
-    <Head>
-      <title>Home</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-
-    <Nav />
-
-    <div className="hero">
-      <h1 className="title">Welcome to Next.js!</h1>
-      <p className="description">
-        To get started, edit <code>pages/index.js</code> and save to reload.
-      </p>
-
-      <div className="row">
-        <a href="https://nextjs.org/docs" className="card">
-          <h3>Documentation &rarr;</h3>
-          <p>Learn more about Next.js in the documentation.</p>
-        </a>
-        <a href="https://nextjs.org/learn" className="card">
-          <h3>Next.js Learn &rarr;</h3>
-          <p>Learn about Next.js by following an interactive tutorial!</p>
-        </a>
-        <a
-          href="https://github.com/zeit/next.js/tree/master/examples"
-          className="card"
+export default () => (
+  <Layout>
+    <Header>
+      <Row justify='space-around' type='flex'>
+        <Col span={20}>
+          <Row justify='space-around' type='flex'>
+            <Col span={12} md={12} xs={24}>
+              <span>Welcome to Boater Mesh</span>
+            </Col>
+            <Col span={12} md={12} xs={0}>
+              <span className='ml-30 float-right'>
+                {/* <Icon type='phone' theme='filled' /> Call us 09-999-9999 */}
+              </span>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
+    </Header>
+    <Row justify='space-around' type='flex'>
+      <Col
+        span={20}
+        style={{
+          textAlign: 'right',
+          height: 50,
+          display: 'flex',
+          justifyContent: 'flex-end',
+          textTransform: 'uppercase'
+        }}
+      >
+        <div style={{ width: 'fit-content', margin: 'auto 0px' }}>
+          <Link href='/'>
+            <a>Home</a>
+          </Link>
+        </div>
+        <div style={{ width: 'fit-content', margin: 'auto 0px' }}>
+          <Link href='/gauges'>
+            <a>Gauges</a>
+          </Link>
+        </div>
+        <div style={{ width: 'fit-content', margin: 'auto 0px' }}>
+          <Link href='/about'>
+            <a>About us</a>
+          </Link>
+        </div>
+      </Col>
+    </Row>
+    <Row justify='space-around' type='flex'>
+      <Col span={20}>
+        <Breadcrumb>
+          <Breadcrumb.Item href=''>
+            <Icon type='home' />
+          </Breadcrumb.Item>
+          <Breadcrumb.Item href=''>
+            <Icon type='user' />
+            <span>Home</span>
+          </Breadcrumb.Item>
+        </Breadcrumb>
+      </Col>
+    </Row>
+    <Row justify='space-around' type='flex'>
+      <Col
+        span={20}
+        style={{
+          paddingTop: '30px',
+          paddingBottom: '30px',
+          minHeight: '500px'
+        }}
+      >
+        <Content>
+          <div>
+            <Carousel>
+              <div>
+                <h3 style={{ display: 'flex', justifyContent: 'center' }}>
+                  <img
+                    src='/static/images/body-of-water-1487031.jpg'
+                    style={{ height: '560px' }}
+                  />
+                </h3>
+              </div>
+              <div>
+                <h3>
+                  <img src='/static/images/clouds-daylight-forest-hdr-301601.jpg' />
+                </h3>
+              </div>
+              <div>
+                <h3>
+                  <img src='/static/images/gray-bridge-and-trees-814499.jpg' />
+                </h3>
+              </div>
+              <div>
+                <h3>
+                  <img src='/static/images/nature-forest-waves-trees-2438.jpg' />
+                </h3>
+              </div>
+              <div>
+                <h3>
+                  <img src='/static/images/pine-trees-by-lake-in-forest-against-sky-247474.jpg' />
+                </h3>
+              </div>
+            </Carousel>
+          </div>
+          <Row gutter={16}>
+            <Col span={6} md={6} sm={12} xs={24}>
+              <Card
+                hoverable
+                cover={
+                  <img
+                    alt='image1'
+                    style={{ width: '100%' }}
+                    src='/static/images/body-of-water-between-green-leaf-trees-709552.jpg'
+                  />
+                }
+              >
+                <Card.Meta
+                  title='Menu 1'
+                  description='burger with patty and cheese'
+                />
+              </Card>
+            </Col>
+            <Col span={6} md={6} sm={12} xs={24}>
+              <Card
+                hoverable
+                cover={
+                  <img
+                    alt='image2'
+                    style={{ width: '100%' }}
+                    src='/static/images/burger2.jpg'
+                  />
+                }
+              >
+                <Card.Meta
+                  title='Menu 2'
+                  description='burger on white ceramic plate'
+                />
+              </Card>
+            </Col>
+            <Col span={6} md={6} sm={12} xs={24}>
+              <Card
+                hoverable
+                cover={
+                  <img
+                    alt='image3'
+                    style={{ width: '100%' }}
+                    src='/static/images/burger3.jpg'
+                  />
+                }
+              >
+                <Card.Meta
+                  title='Menu 3'
+                  description='burger with tomato and onion'
+                />
+              </Card>
+            </Col>
+            <Col span={6} md={6} sm={12} xs={24}>
+              <Card
+                hoverable
+                cover={
+                  <img
+                    alt='image4'
+                    style={{ width: '100%' }}
+                    src='/static/images/burger4.jpg'
+                  />
+                }
+              >
+                <Card.Meta
+                  title='Menu 4'
+                  description='burger with vegetables'
+                />
+              </Card>
+            </Col>
+          </Row>
+        </Content>
+      </Col>
+    </Row>
+    <Row justify='space-around' type='flex' style={{ background: '#f9f9f9' }}>
+      <Col md={8} xs={20} style={{ height: '40px', display: 'flex' }}>
+        <div style={{ margin: 'auto 0px' }}>&copy; 2019 nextjs antd now.sh</div>
+      </Col>
+      <Col md={8} xs={20}>
+        <div
+          style={{
+            margin: 'auto',
+            height: '40px',
+            display: 'flex',
+            justifyContent: 'flex-end'
+          }}
         >
-          <h3>Examples &rarr;</h3>
-          <p>Find other example boilerplates on the Next.js GitHub.</p>
-        </a>
-      </div>
-    </div>
-
-    <style jsx>{`
-      .hero {
-        width: 100%;
-        color: #333;
-      }
-      .title {
-        margin: 0;
-        width: 100%;
-        padding-top: 80px;
-        line-height: 1.15;
-        font-size: 48px;
-      }
-      .title,
-      .description {
-        text-align: center;
-      }
-      .row {
-        max-width: 880px;
-        margin: 80px auto 40px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9b9b9b;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
-      }
-    `}</style>
-  </div>
+          <Icon style={{ margin: 'auto 10px', fontSize: 20 }} type='facebook' />
+          <Icon
+            style={{ margin: 'auto 10px', fontSize: 20 }}
+            type='instagram'
+          />
+          <Icon style={{ margin: 'auto 10px', fontSize: 20 }} type='google' />
+        </div>
+      </Col>
+    </Row>
+  </Layout>
 )
-
-export default Home
