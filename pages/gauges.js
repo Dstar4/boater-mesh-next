@@ -30,8 +30,7 @@ const GaugesPage = props => {
     router.push(`/site/${rowIndex.key}/readings`)
   }
   const router = useRouter()
-  console.log('router', router.route)
-  console.log(router)
+
   let dataSource = []
   props.sites.map(site => {
     const dataItem = {

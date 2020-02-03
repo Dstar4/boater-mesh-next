@@ -2,67 +2,13 @@ import { Breadcrumb, Icon, Row, Col, Layout, Card, Carousel } from 'antd'
 import Link from 'next/link'
 import '../style.less'
 // import image1 from '../static/images/image1.jpg'
+import GaugesHeader from '../components/header'
 const { Header, Content } = Layout
 
 export default () => (
   <Layout>
-    <Header>
-      <Row justify='space-around' type='flex'>
-        <Col span={20}>
-          <Row justify='space-around' type='flex'>
-            <Col span={12} md={12} xs={24}>
-              <span>Welcome to Boater Mesh</span>
-            </Col>
-            <Col span={12} md={12} xs={0}>
-              <span className='ml-30 float-right'>
-                {/* <Icon type='phone' theme='filled' /> Call us 09-999-9999 */}
-              </span>
-            </Col>
-          </Row>
-        </Col>
-      </Row>
-    </Header>
-    <Row justify='space-around' type='flex'>
-      <Col
-        span={20}
-        style={{
-          textAlign: 'right',
-          height: 50,
-          display: 'flex',
-          justifyContent: 'flex-end',
-          textTransform: 'uppercase'
-        }}
-      >
-        <div style={{ width: 'fit-content', margin: 'auto 0px' }}>
-          <Link href='/'>
-            <a>Home</a>
-          </Link>
-        </div>
-        <div style={{ width: 'fit-content', margin: 'auto 0px' }}>
-          <Link href='/gauges'>
-            <a>Gauges</a>
-          </Link>
-        </div>
-        <div style={{ width: 'fit-content', margin: 'auto 0px' }}>
-          <Link href='/about'>
-            <a>About us</a>
-          </Link>
-        </div>
-      </Col>
-    </Row>
-    <Row justify='space-around' type='flex'>
-      <Col span={20}>
-        <Breadcrumb>
-          <Breadcrumb.Item href=''>
-            <Icon type='home' />
-          </Breadcrumb.Item>
-          <Breadcrumb.Item href=''>
-            <Icon type='user' />
-            <span>Home</span>
-          </Breadcrumb.Item>
-        </Breadcrumb>
-      </Col>
-    </Row>
+    <GaugesHeader />
+
     <Row justify='space-around' type='flex'>
       <Col
         span={20}
@@ -74,36 +20,14 @@ export default () => (
       >
         <Content>
           <div>
-            <Carousel>
-              <div>
-                <h3 style={{ display: 'flex', justifyContent: 'center' }}>
-                  <img
-                    src='/static/images/body-of-water-1487031.jpg'
-                    style={{ height: '560px' }}
-                  />
-                </h3>
-              </div>
-              <div>
-                <h3>
-                  <img src='/static/images/clouds-daylight-forest-hdr-301601.jpg' />
-                </h3>
-              </div>
-              <div>
-                <h3>
-                  <img src='/static/images/gray-bridge-and-trees-814499.jpg' />
-                </h3>
-              </div>
-              <div>
-                <h3>
-                  <img src='/static/images/nature-forest-waves-trees-2438.jpg' />
-                </h3>
-              </div>
-              <div>
-                <h3>
-                  <img src='/static/images/pine-trees-by-lake-in-forest-against-sky-247474.jpg' />
-                </h3>
-              </div>
-            </Carousel>
+            <div>
+              <h3 style={{ display: 'flex', justifyContent: 'center' }}>
+                <img
+                  src='/static/images/body-of-water-1487031.jpg'
+                  style={{ height: '560px' }}
+                />
+              </h3>
+            </div>
           </div>
           <Row gutter={16}>
             <Col span={6} md={6} sm={12} xs={24}>

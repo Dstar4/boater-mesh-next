@@ -1,23 +1,9 @@
-import { useRouter } from 'next/router'
 import fetch from 'isomorphic-unfetch'
-import {
-  Breadcrumb,
-  Icon,
-  Row,
-  Col,
-  Layout,
-  Card,
-  Carousel,
-  PageHeader,
-  Button,
-  Descriptions
-} from 'antd'
-import { Table } from 'antd'
-import Nav from '../../../components/nav'
-import Link from 'next/link'
+import { Table, Row, Col, Layout, PageHeader, Button, Descriptions } from 'antd'
 import GaugesHeader from '../../../components/header'
+import Chart from '../../../components/readingsChart'
 
-const { Header, Content } = Layout
+const { Content } = Layout
 
 const columns = [
   {
@@ -40,7 +26,6 @@ const columns = [
 ]
 
 const ReadingsPage = props => {
-  console.log(props)
   let dataSource = []
 
   props.readings.map(reading => {
@@ -55,6 +40,42 @@ const ReadingsPage = props => {
   return (
     <Layout>
       <GaugesHeader />
+      <div
+        style={{
+          backgroundColor: '#F5F5F5',
+          padding: 24
+        }}
+      >
+        <PageHeader
+          ghost={false}
+          onBack={() => window.history.back()}
+          title={props.site.siteName}
+          // subTitle='This is a subtitle'
+          // extra={[
+          //   <Button key='3'>Operation</Button>,
+          //   <Button key='2'>Operation</Button>,
+          //   <Button key='1' type='primary'>
+          //     Primary
+          //   </Button>
+          // ]}
+        >
+          <Descriptions size='small' column={3}>
+            <Descriptions.Item label='Value Type'>
+              {props.site.valueType}
+            </Descriptions.Item>
+            <Descriptions.Item label='Most Recent Reading'>
+              {props.readings[0].value} {props.readings[0].unit}
+            </Descriptions.Item>
+            <Descriptions.Item label='TimeStamp'>
+              {props.readings[0].timeStamp.time}{' '}
+              {props.readings[0].timeStamp.year}
+            </Descriptions.Item>
+            <Descriptions.Item label='USGS ID'>
+              {props.site.name}
+            </Descriptions.Item>
+          </Descriptions>
+        </PageHeader>
+      </div>
       <Row justify='space-around' type='flex'>
         <Col
           span={20}
@@ -65,12 +86,7 @@ const ReadingsPage = props => {
           }}
         >
           <div>
-            <h3 style={{ display: 'flex', justifyContent: 'center' }}>
-              <img
-                src='/static/images/body-of-water-1487031.jpg'
-                style={{ height: '560px' }}
-              />
-            </h3>
+            <Chart data={props.readings} unit={props.readings.unit} />
           </div>
         </Col>
         <Content style={{ display: 'flex', justifyContent: 'center' }}>
@@ -78,15 +94,9 @@ const ReadingsPage = props => {
             <Row>
               <Table
                 style={{ marginTop: '2em' }}
-                onRow={rowIndex => {
-                  return {
-                    onClick: () => {
-                      handleClick(router, rowIndex)
-                    }
-                  }
-                }}
                 columns={columns}
                 dataSource={dataSource}
+                pagination={false}
               />
             </Row>
           </Col>
@@ -101,7 +111,6 @@ ReadingsPage.getInitialProps = async ({ query }) => {
   // const gauge = await fetch(`http://localhost:5000/api/gauges/${query.id}`)
   // const gaugeJson = await gauge.json()
   const data = await res.json()
-  console.log('data', data)
   return {
     site: data.site,
     readings: data.readings
