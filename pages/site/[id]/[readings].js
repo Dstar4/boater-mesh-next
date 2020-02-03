@@ -96,7 +96,8 @@ const ReadingsPage = props => {
                 style={{ marginTop: '2em' }}
                 columns={columns}
                 dataSource={dataSource}
-                pagination={false}
+                pagination={{ pageSize: 25 }}
+
               />
             </Row>
           </Col>

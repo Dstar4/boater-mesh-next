@@ -1,8 +1,9 @@
 import fetch from 'isomorphic-unfetch'
-import { useRouter } from 'next/router'
+import Router, { useRouter } from 'next/router'
 import { Table, Breadcrumb, Icon, Layout, Row, Col } from 'antd'
 import Link from 'next/link'
 import GaugesHeader from '../components/header'
+import { useState } from 'react'
 const columns = [
   {
     title: 'Name',
@@ -23,7 +24,7 @@ const columns = [
   }
 ]
 
-const {  Content } = Layout
+const { Content } = Layout
 
 const GaugesPage = props => {
   const handleClick = (router, rowIndex) => {
@@ -43,25 +44,25 @@ const GaugesPage = props => {
   })
   return (
     <Layout>
-      <GaugesHeader/>
+      <GaugesHeader />
       <Row justify='space-around' type='flex'>
-      <Col
-        span={20}
-        style={{
-          paddingTop: '30px',
-          paddingBottom: '30px',
-          minHeight: '500px'
-        }}
-      >
-        <div>
-          <h3 style={{ display: 'flex', justifyContent: 'center' }}>
-            <img
-              src='/static/images/body-of-water-1487031.jpg'
-              style={{ height: '560px' }}
-            />
-          </h3>
-        </div>
-      </Col>
+        <Col
+          span={20}
+          style={{
+            paddingTop: '30px',
+            paddingBottom: '30px',
+            minHeight: '500px'
+          }}
+        >
+          <div>
+            <h3 style={{ display: 'flex', justifyContent: 'center' }}>
+              <img
+                src='/static/images/body-of-water-1487031.jpg'
+                style={{ height: '560px' }}
+              />
+            </h3>
+          </div>
+        </Col>
         <Content style={{ display: 'flex', justifyContent: 'center' }}>
           <Col span={15}>
             <Row>
@@ -75,6 +76,7 @@ const GaugesPage = props => {
                 }}
                 columns={columns}
                 dataSource={dataSource}
+                pagination={{ pageSize: 25 }}
               />
             </Row>
           </Col>
